@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.form-setting {
+  margin: 0 0 20px 0;
+}
+.form-select {
+  width: 100% !important;
+}
+/* 设置table表格的表头的字体样式和背景颜色 */
+.el-table th.el-table__cell {
+  background-color: rgb(248,249,250) !important;
+  color: rgb(97,103,116) !important;
+  text-align: center !important;
+}
+/*字体图标设置 */
+/* table子列表展开箭头 */
+.el-icon-my-arrow {
+  cursor: pointer;
+  width: 10px !important;
+  height: 10px !important;
+  background: url('../icon/arrow.png') center no-repeat;
+  background-size: cover; 
+  margin-left: 3px !important;
+}
+.el-icon-my-down {
+    width: 15px !important;
+    height: 15px !important;
+    background: url('../icon/d1.png') center no-repeat;
+    background-size: cover; 
+}
+.el-icon-my-d1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/d1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-d2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/d2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-add1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/add.png') center no-repeat;
+  background-size: cover; 
+}
+
+.el-icon-my-book1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/book1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-book2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/book2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-calculator1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/calculator1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-calculator2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/calculator2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-data1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/data1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-data2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/data2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-file1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/file1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-file2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/file2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-menu1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/menu1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-menu2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/menu2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-mode1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/mode1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-mode2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/mode2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-report1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/report1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-report2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/report2.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-set1 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/set1.png') center no-repeat;
+  background-size: cover; 
+}
+.el-icon-my-set2 {
+  width: 15px !important;
+  height: 15px !important;
+  background: url('../icon/logo/set2.png') center no-repeat;
+  background-size: cover; 
+}
