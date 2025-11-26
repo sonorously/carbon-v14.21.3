@@ -137,9 +137,6 @@ export default {
       const res = await getStandardFileComboBox({});
       try {
         this.accountingStandardsList = res.data.data;
-        console.log('AAAAAAAAAAAAAA', res);
-        console.log('BBBBBBBBBBBBBB', res.data);
-        console.log('CCCCCCCCCCCCCC', this.accountingStandardsList);
       }
       catch (err) {
         this.$message.error(err.message);

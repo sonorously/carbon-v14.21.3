@@ -21,22 +21,19 @@
             </el-col>
           </el-row>
         </div>
+        <!-- 分步骤table列表 -->
         <div class="step-item">
           <div v-if="stepData[activeStep]">
-            <step-list v-if="stepData[activeStep].isOpen === 0" :isShow="Boolean(stepData[activeStep].isOpen)" :columns="stepData[activeStep].columns" :tableData="stepData[activeStep].childData"></step-list>
             <expandable-table
-                v-if="stepData[activeStep].isOpen === 1"
                 :headers="stepData[activeStep].columns"
                 :table-data="stepData[activeStep].childData"
+                :is-open="stepData[activeStep].isOpen"
                 @input-change="handleInputChange"
                 @expand-change="handleExpandChange"
             />
           </div>
         </div>
-        <!--<step-one v-if="activeStep === 0" @next-step="handleNextStep" @prev-step="handlePrevStep"></step-one>
-        <step-two v-if="activeStep === 1" @next-step="handleNextStep" @prev-step="handlePrevStep"></step-two>
-        <step-three v-if="activeStep === 2" @next-step="handleNextStep" @prev-step="handlePrevStep"></step-three>
-        <step-four v-if="activeStep === 3" @next-step="handleNextStep" @prev-step="handlePrevStep"></step-four>-->
+        <!-- 分步骤按钮 -->
         <div class="step-footer">
           <el-row style="margin: 20px 0">
             <el-col align="center">
@@ -78,12 +75,10 @@
 </template>
 <script>
 import ExpandableTable from '@/components/publicComponent/ExpandableTable.vue';
-import StepList from '@/view/CarbonAccounting/accounting/CalculateCarbonEmissionsStep/StepList.vue';
 import { getTypeModelByProduct, saveCarbonDataAdd, analysisUploadExcel } from '@/api/index.js'
 export default {
   name: 'accounting',
-  components: { StepList, ExpandableTable },
-
+  components: { ExpandableTable },
   data() {
     return {
       productCategoryCode: this.$route.query.productCategoryCode,
@@ -156,25 +151,6 @@ export default {
         })
       }
     },
-    /*// 下一步处理
-    handleNextStep(stepData) {
-      // 保存当前步骤数据（如果子组件传递了数据）
-      // if (stepData) {
-      //   Object.assign(this.form[`step${this.active + 1}`], stepData)
-      // }
-
-      // 验证当前步骤数据（可根据需要添加）
-      // if (this.validateCurrentStep()) {
-      //   this.active++
-      // }
-      if (this.active < 3) this.active++
-    },
-    // 上一步处理
-    handlePrevStep() {
-      if (this.active > 0) {
-        this.active--
-      }
-    },*/
     async fetchData(res) {
       this.stepList = res.data.stepList;
       this.stepData = res.data.tableList;
