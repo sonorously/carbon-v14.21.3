@@ -22,7 +22,7 @@ service.interceptors.request.use((config) => {
     //请求的数据
     // 下载接口超时时间设置为5分钟
     // if (service.defaults.noEncryptionResponse.every(item => { return response.config.url.indexOf(delHeadSlash(item)) == -1 })) {}
-    if (config.url.indexOf('/download') > -1 || config.url.indexOf('carbon-check/standardFile/getStandardFile') > -1 || config.url.indexOf('carbon-check/carbonReport/getCarbonReportFile') > -1 || config.url.indexOf('carbon-check/carbonModelInfo/getCarbonModelFile') > -1) {
+    if (config.url.indexOf('/download') > -1 || config.url.indexOf('carbon-check/standardFile/getStandardFile') > -1 || config.url.indexOf('carbon-check/carbonReport/getCarbonReportFile') > -1 || config.url.indexOf('carbon-check/carbonModelInfo/getCarbonModelFile') > -1 || config.url.indexOf('carbon-check/productCategoryInfo/getCarbonModelFileByCategory') > -1) {
         config.timeout = 15 * 60 * 1000;
     }
     if (config.url.indexOf('/download') > -1 || config.url.indexOf('carbon-check/standardFile/saveStandardFileAdd') > -1 ) {
@@ -40,7 +40,7 @@ service.interceptors.request.use((config) => {
 //响应拦截：后端返回来的结果
 service.interceptors.response.use((response) => {
     console.log("下载：", response)
-    if (response.config.url.indexOf('carbon-check/standardFile/getStandardFile') > -1 || response.config.url.indexOf('carbon-check/carbonReport/getCarbonReportFile') > -1 || response.config.url.indexOf('carbon-check/carbonModelInfo/getCarbonModelFile') > -1) {
+    if (response.config.url.indexOf('carbon-check/standardFile/getStandardFile') > -1 || response.config.url.indexOf('carbon-check/carbonReport/getCarbonReportFile') > -1 || response.config.url.indexOf('carbon-check/carbonModelInfo/getCarbonModelFile') > -1 || response.config.url.indexOf('carbon-check/productCategoryInfo/getCarbonModelFileByCategory') > -1) {
         return Promise.resolve(response)
     } else {
         const code = response.data.status//code是后端的状态码,判断后端返回的状态码的接收值是否正确

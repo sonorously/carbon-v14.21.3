@@ -86,6 +86,15 @@ export function saveCarbonDataAdd(queryData) {
         data: queryData,
     });
 }
+// 下载模版
+export function getCarbonModelFileByCategory(queryData) {
+  return request({
+    url: `${url}/productCategoryInfo/getCarbonModelFileByCategory`,
+    method: "post",
+    data: queryData,
+    responseType: "blob"
+  });
+}
 
 /* 产品信息库 */
 //--- 查询产品信息 ---

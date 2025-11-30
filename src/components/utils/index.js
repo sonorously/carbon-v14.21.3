@@ -24,6 +24,44 @@ export const handleBlobDownload = function (response, defaultFilename){
     window.URL.revokeObjectURL(downloadUrl);
 }
 
+/* 文件下载的的时候返回的流文件中的文件名称 */
+export const getFileNameFromHeaders = function ( headers ) {
+  const contentDisposition = headers['content-disposition'];
+  if (!contentDisposition) {
+    return 'download.file';
+  }
+  let fileName = 'download.file';
+  // 优先处理 RFC 5987 编码 (filename*=utf-8'')
+  const utf8FilenameRegex = /filename\*=utf-8''([^;]+)/i;
+  const utf8Matches = utf8FilenameRegex.exec(contentDisposition);
+  if (utf8Matches && utf8Matches[1]) {
+    fileName = decodeFileName(utf8Matches[1]);
+  } else {
+    // 处理普通文件名 (filename="...")
+    const filenameRegex = /filename=["']?([^"';]+)["']?/i;
+    const matches = filenameRegex.exec(contentDisposition);
+    if (matches && matches[1]) {
+      fileName = decodeFileName(matches[1]);
+    }
+  }
+  // 清理文件名中的非法字符
+  fileName = fileName.replace(/[<>:"/\\|?*]/g, '_');
+  console.log('转码后的文件名称：', fileName);
+  return fileName;
+}
+/* 解码文件名函数 */
+export const decodeFileName = function (encodedName) {
+  try {
+    // 移除可能存在的引号
+    let name = encodedName.replace(/['"]/g, '');
+    // URL 解码
+    return decodeURIComponent(name);
+  } catch (error) {
+    console.warn('文件名解码失败，使用原始名称:', error);
+    return encodedName;
+  }
+}
+
 // 获取div的高度
 export const getContextHeight = function (){
   const h = document.querySelector('.card-bottom')?.offsetHeight ?? 0;

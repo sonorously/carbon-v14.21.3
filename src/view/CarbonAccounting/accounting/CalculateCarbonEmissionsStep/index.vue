@@ -66,6 +66,7 @@
         <el-button size="small" type="primary">点击上传</el-button>
         <div slot="tip" class="el-upload__tip">文件上传格式为excel文件，单次只能上传一个文件。</div>
       </el-upload>
+      <el-button type="text" @click="downloadFile()">下载模版</el-button>
       <span slot="footer" class="dialog-footer">
         <el-button @click="clearFile">取消</el-button>
         <el-button type="primary" @click="submitFile()">确定</el-button>
@@ -75,7 +76,13 @@
 </template>
 <script>
 import ExpandableTable from '@/components/publicComponent/ExpandableTable.vue';
-import { getTypeModelByProduct, saveCarbonDataAdd, analysisUploadExcel } from '@/api/index.js'
+import {
+  getTypeModelByProduct,
+  saveCarbonDataAdd,
+  analysisUploadExcel,
+  getCarbonModelFileByCategory
+} from '@/api/index.js'
+import {handleBlobDownload, getFileNameFromHeaders} from "@/components/utils";
 export default {
   name: 'accounting',
   components: { ExpandableTable },
@@ -189,6 +196,28 @@ export default {
     uploadChange(file,fileList){
       this.uploadFiles = fileList;
     },
+    async downloadFile() {
+      console.log('路由传过来的文件名称：', this.$route.query.accountingStandards);
+      this.$confirm(`确定下载文件模版吗?`, '提示', {
+        type: 'warning'
+      }).then(async () => {
+        try {
+          const response = await getCarbonModelFileByCategory({productCategoryCode:this.$route.query.productCategoryCode});
+          const fileName = getFileNameFromHeaders(response.headers);
+          handleBlobDownload(response, fileName);
+          console.log('收到 octet-stream 响应:', {
+            status: response.status,
+            headers: response.headers,
+            blobSize: response.data.size,
+            blobType: response.data.type
+          });
+          this.$message.success('下载成功');
+        } catch (error) {
+          this.$message.error(error);
+        }
+      });
+    },
+
   },
 
 }

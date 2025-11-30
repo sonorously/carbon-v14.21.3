@@ -105,7 +105,7 @@
 <script>
 import { queryStandardFilePage,getStandardFile, saveStandardFileAdd, saveStandardFileDel } from '@/api/index.js'
 import DataTable from '@/components/publicComponent/DataTable.vue';
-import { handleBlobDownload, getContextHeight } from '@/components/utils/index.js'
+import { handleBlobDownload } from '@/components/utils/index.js'
 export default {
   name: 'StandardDocumentLibrary',
   components: { DataTable },
