@@ -267,11 +267,12 @@ export default {
 }
 /* 非系统图标下载按钮 带背景颜色 */
 .icon-download {
-  width: 100px;
-  height: 32px;
+  width: 250px;
+  height: 45px;
   background-color: rgb(77,146,252);
   color: #ffffff;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: bold;
   border-radius: 5px;
   display: flex;
   justify-content: center;
